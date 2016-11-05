@@ -1,9 +1,71 @@
+<html>
+<head>
+  <title>どすこい山田革命！お知らせページ</title>
+<link href="https://fonts.googleapis.com/css?family=Trirong" rel="stylesheet">
+<script language="JavaScript" type="text/javascript">
+function CountdownTimer(elm,tl,mes){
+ this.initialize.apply(this,arguments);
+}
+CountdownTimer.prototype={
+ initialize:function(elm,tl,mes) {
+  this.elem = document.getElementById(elm);
+  this.tl = tl;
+  this.mes = mes;
+ },countDown:function(){
+  var timer='';
+  var today=new Date();
+  var day=Math.floor((this.tl-today)/(24*60*60*1000));
+  var hour=Math.floor(((this.tl-today)%(24*60*60*1000))/(60*60*1000));
+  var min=Math.floor(((this.tl-today)%(24*60*60*1000))/(60*1000))%60;
+  var sec=Math.floor(((this.tl-today)%(24*60*60*1000))/1000)%60%60;
+  var milli=Math.floor(((this.tl-today)%(24*60*60*1000))/10)%100;
+  var me=this;
+
+  if( ( this.tl - today ) > 0 ){
+   if (day) timer += '<span class="day">'+day+'日</span>';
+   if (hour) timer += '<span class="hour">'+hour+'時間</span>';
+   timer += '<span class="min">'+this.addZero(min)+'分</span><span class="sec">'+this.addZero(sec)+'秒</span><span class="milli">'+this.addZero(milli)+'</span>';
+   this.elem.innerHTML = timer;
+   tid = setTimeout( function(){me.countDown();},10 );
+  }else{
+   this.elem.innerHTML = this.mes;
+   return;
+  }
+ },addZero:function(num){ return ('0'+num).slice(-2); }
+}
+function CDT(){
+ var tl = new Date('2016/11/5 21:00:00');
+ var timer = new CountdownTimer('CDT',tl,'!!!NOW ON AIR!!!');
+ timer.countDown();
+}
+window.onload=function(){
+ CDT();
+}
+</script>
+<style type="text/css">
+body{
+  font-family: 'Trirong', serif;
+}
+#CDT{
+ font-size: 26px;
+}
+#CDT .day{
+ font-size: 48px;
+}
+#CDT .hour,#CDT .min,#CDT .sec{
+ font-size: 32px;
+}
+</style>
+
+</head>
+<body>
 <h1>第2回 どすこい山田杯</h1>
 <p>
   <a href="http://com.nicovideo.jp/community/co3148099" target="_blank">ニコ生 どすこい山田革命！co3148099</a>
 </p>
 
 <h2> 2016/11/05 21:00 Start</h2>
+  <div id="CDT"></div>
 
 <div>
   <h3>参加者／デッキ</h3>
@@ -38,3 +100,5 @@
     誰でも歓迎します╰U╯ ヽ(´･ω･｀ヽ)​ㄘんㄘんまってぇー<br/>
   </p>
 </div>
+</body>
+</html>
