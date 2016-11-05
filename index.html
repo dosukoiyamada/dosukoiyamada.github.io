@@ -23,7 +23,7 @@ CountdownTimer.prototype={
 
   if( ( this.tl - today ) > 0 ){
    if (day) timer += '<span class="day">'+day+'日</span>';
-   if (hour) timer += '<span class="hour">'+hour+'時間</span>';
+   if (hour) timer += '<span class="hour">大会開始まで残り '+hour+'時間</span>';
    timer += '<span class="min">'+this.addZero(min)+'分</span><span class="sec">'+this.addZero(sec)+'秒</span><span class="milli">'+this.addZero(milli)+'</span>';
    this.elem.innerHTML = timer;
    tid = setTimeout( function(){me.countDown();},10 );
@@ -64,7 +64,9 @@ body{
   <a href="http://com.nicovideo.jp/community/co3148099" target="_blank">ニコ生 どすこい山田革命！co3148099</a>
 </p>
 
-<h2> 2016/11/05 21:00 Start</h2>
+<div>
+  2016/11/05 21:00 Start
+</div>
   <div id="CDT"></div>
 
 <div>
